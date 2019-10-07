@@ -4,9 +4,13 @@ import {
   TouchableOpacity,
   View,
   Image,
-  Text
+  Text,
+  ScrollView,
+  FlatList
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import VideoItem from './src/components/VideoItem';
+import data from './src/data';
 
 function App() {
   return (
@@ -23,7 +27,11 @@ function App() {
         </View>
       </View>
       <View style={styles.body}>
-        
+        <FlatList
+          data={data.items}
+          renderItem={video => <VideoItem video={video.item} />} 
+          keyExtractor={item => item.id} 
+          ItemSeparatorComponent={() => <View style={{height: 0.5, backgroundColor: '#E5E5E5'}}></View>} />
       </View>
       <View style={styles.tabBar}>
         <TouchableOpacity style={styles.tabItem}>
