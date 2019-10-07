@@ -1,113 +1,93 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
 import {
-  SafeAreaView,
   StyleSheet,
-  ScrollView,
+  TouchableOpacity,
   View,
-  Text,
-  StatusBar,
+  Image,
+  Text
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
+function App() {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <View style={styles.container}>
+      <View style={styles.navBar}>
+        <Image style={styles.logo} source={require('./src/assets/youtube-logo.png')} />
+        <View style={styles.rightNav}>
+          <TouchableOpacity>
+            <Icon style={styles.navItem} name="search" size={25} />
+          </TouchableOpacity>
+          <TouchableOpacity>          
+            <Icon style={styles.navItem} name="account-circle" size={25} />
+          </TouchableOpacity>
+        </View>
+      </View>
+      <View style={styles.body}>
+        
+      </View>
+      <View style={styles.tabBar}>
+        <TouchableOpacity style={styles.tabItem}>
+          <Icon name="home" size={25} />
+          <Text style={styles.tabTitle}>Home</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}>
+          <Icon name="whatshot" size={25} />
+          <Text style={styles.tabTitle}>Trending</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}>
+          <Icon name="subscriptions" size={25} />
+          <Text style={styles.tabTitle}>Subscription</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem}>
+          <Icon name="folder" size={25} />
+          <Text style={styles.tabTitle}>Library</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    flex: 1,
   },
-  engine: {
-    position: 'absolute',
-    right: 0,
+  navBar: {
+    height: 55,
+    backgroundColor: 'white',
+    elevation: 3,
+    paddingHorizontal: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  logo: {
+    width: 50,
+  },
+  rightNav: {
+    flexDirection: 'row',
+  },
+  navItem: {
+    marginLeft: 25,
   },
   body: {
-    backgroundColor: Colors.white,
+    flex: 1,
   },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  tabBar: {
+    backgroundColor: 'white',
+    height: 60,
+    borderTopWidth: 0.5,
+    borderColor: '#E5E5E5',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
+  tabItem: {
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+  tabTitle: {
+    fontSize: 11,
+    color: '#3c3c3c',
+    paddingTop: 4
   },
 });
 
